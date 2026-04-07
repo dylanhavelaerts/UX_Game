@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dbh7x032r23ah"]
+
+[ext_resource type="Script" uid="uid://drmlorqlcemen" path="res://scenes/UpgradeScene.gd" id="1_jb3l7"]
+
+[node name="UpgradeScene" type="Node" unique_id=337092419]
+script = ExtResource("1_jb3l7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1340002708]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=304574630]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoldLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1632557139]
+layout_mode = 2
+
+[node name="ItemLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=305073517]
+layout_mode = 2
+
+[node name="ResultLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=205523794]
+layout_mode = 2
+
+[node name="RollUpgradeButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1110165973]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1266023473]
+layout_mode = 2
