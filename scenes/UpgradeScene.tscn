@@ -1,15 +1,75 @@
 [gd_scene format=3 uid="uid://dbh7x032r23ah"]
 
 [ext_resource type="Script" uid="uid://drmlorqlcemen" path="res://scenes/UpgradeScene.gd" id="1_jb3l7"]
+[ext_resource type="Texture2D" uid="uid://ur7e50yjk163" path="res://sceneScreens/upgradeScene/upgradeOutsideStatic.png" id="2_jdyxm"]
+[ext_resource type="Texture2D" uid="uid://cfeh3ln4fap2m" path="res://sceneScreens/upgradeScene/upgradeManDefault.png" id="3_2voq4"]
+[ext_resource type="Texture2D" uid="uid://dgau07602fyya" path="res://sceneScreens/upgradeScene/upgradeManCursed.png" id="4_jy4p0"]
+[ext_resource type="Texture2D" uid="uid://d0r0reeqc8vq3" path="res://sceneScreens/upgradeScene/upgradeManSteal.png" id="5_yhlgp"]
+[ext_resource type="Texture2D" uid="uid://dqry638fcijxn" path="res://sceneScreens/upgradeScene/closingFrame.png" id="6_4xp1r"]
+[ext_resource type="Texture2D" uid="uid://gdwf3a5ypv7b" path="res://sceneScreens/upgradeScene/upgradeFrameStatic.png" id="7_gnpt0"]
 
 [node name="UpgradeScene" type="Node" unique_id=337092419]
 script = ExtResource("1_jb3l7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1340002708]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=304574630]
+[node name="backjground" type="Control" parent="CanvasLayer" unique_id=193130488]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="backgroundStatic" type="TextureRect" parent="CanvasLayer/backjground" unique_id=672315324]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("2_jdyxm")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="manDefault" type="TextureRect" parent="CanvasLayer/backjground" unique_id=1672454210]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("3_2voq4")
+expand_mode = 1
+
+[node name="manCursed" type="TextureRect" parent="CanvasLayer/backjground" unique_id=1582857411]
+visible = false
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("4_jy4p0")
+expand_mode = 1
+
+[node name="manSteal" type="TextureRect" parent="CanvasLayer/backjground" unique_id=449143555]
+visible = false
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("5_yhlgp")
+expand_mode = 1
+
+[node name="frameClose" type="TextureRect" parent="CanvasLayer/backjground" unique_id=226108374]
+visible = false
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("6_4xp1r")
+expand_mode = 1
+
+[node name="frameStatic" type="TextureRect" parent="CanvasLayer/backjground" unique_id=1081519320]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("7_gnpt0")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=304574630]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 154.0
+grow_vertical = 2
 
 [node name="GoldLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1632557139]
 layout_mode = 2
