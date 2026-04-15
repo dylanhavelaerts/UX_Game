@@ -22,6 +22,11 @@ layout_mode = 2
 
 [node name="RollUpgradeButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1110165973]
 layout_mode = 2
+text = "Upgrade dice"
 
 [node name="BackButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1266023473]
 layout_mode = 2
+text = "Go back to fighting"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/RollUpgradeButton" to="." method="_on_roll_upgrade_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

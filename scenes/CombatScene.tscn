@@ -37,8 +37,10 @@ stretch_mode = 5
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -27.0
-offset_right = 4.0
+offset_left = 227.0
+offset_top = -72.0
+offset_right = 572.0
+offset_bottom = -45.0
 grow_vertical = 0
 value = 100.0
 
@@ -48,8 +50,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -27.0
+offset_left = -626.0
+offset_top = -555.0
+offset_right = -285.0
+offset_bottom = -528.0
 grow_horizontal = 0
 grow_vertical = 0
 value = 100.0
@@ -92,10 +96,11 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "🎲 Roll Dice"
 
-[node name="GoUpgradeButton" type="Button" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=68144710]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "🧙 Upgrade"
+[node name="UpgradeDialog" type="ConfirmationDialog" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=1586091924]
+title = "Do you want to Upgrade or Fight"
+ok_button_text = "Upgrade"
+cancel_button_text = "Fight"
 
 [connection signal="pressed" from="CanvasLayer/Control(UI)/VBoxContainer/RollButton" to="." method="_on_roll_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control(UI)/VBoxContainer/GoUpgradeButton" to="." method="_on_go_upgrade_button_pressed"]
+[connection signal="canceled" from="CanvasLayer/Control(UI)/VBoxContainer/UpgradeDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="CanvasLayer/Control(UI)/VBoxContainer/UpgradeDialog" to="." method="_on_confirmation_dialog_confirmed"]
