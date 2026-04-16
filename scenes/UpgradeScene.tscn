@@ -13,13 +13,13 @@ script = ExtResource("1_jb3l7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1340002708]
 
-[node name="backjground" type="Control" parent="CanvasLayer" unique_id=193130488]
+[node name="background" type="Control" parent="CanvasLayer" unique_id=193130488]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="backgroundStatic" type="TextureRect" parent="CanvasLayer/backjground" unique_id=672315324]
+[node name="backgroundStatic" type="TextureRect" parent="CanvasLayer/background" unique_id=672315324]
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 648.0
@@ -27,14 +27,14 @@ texture = ExtResource("2_jdyxm")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="manDefault" type="TextureRect" parent="CanvasLayer/backjground" unique_id=1672454210]
+[node name="manDefault" type="TextureRect" parent="CanvasLayer/background" unique_id=1672454210]
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 648.0
 texture = ExtResource("3_2voq4")
 expand_mode = 1
 
-[node name="manCursed" type="TextureRect" parent="CanvasLayer/backjground" unique_id=1582857411]
+[node name="manCursed" type="TextureRect" parent="CanvasLayer/background" unique_id=1582857411]
 visible = false
 layout_mode = 0
 offset_right = 1151.0
@@ -42,7 +42,7 @@ offset_bottom = 648.0
 texture = ExtResource("4_jy4p0")
 expand_mode = 1
 
-[node name="manSteal" type="TextureRect" parent="CanvasLayer/backjground" unique_id=449143555]
+[node name="manSteal" type="TextureRect" parent="CanvasLayer/background" unique_id=449143555]
 visible = false
 layout_mode = 0
 offset_right = 1151.0
@@ -50,15 +50,16 @@ offset_bottom = 648.0
 texture = ExtResource("5_yhlgp")
 expand_mode = 1
 
-[node name="frameClose" type="TextureRect" parent="CanvasLayer/backjground" unique_id=226108374]
-visible = false
+[node name="frameClose" type="TextureRect" parent="CanvasLayer/background" unique_id=226108374]
 layout_mode = 0
-offset_right = 1151.0
-offset_bottom = 648.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1150.0
+offset_bottom = 649.0
 texture = ExtResource("6_4xp1r")
 expand_mode = 1
 
-[node name="frameStatic" type="TextureRect" parent="CanvasLayer/backjground" unique_id=1081519320]
+[node name="frameStatic" type="TextureRect" parent="CanvasLayer/background" unique_id=1081519320]
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 648.0
@@ -82,7 +83,8 @@ layout_mode = 2
 
 [node name="RollUpgradeButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1110165973]
 layout_mode = 2
-text = "Upgrade dice"
+text = "Roll to upgrade
+"
 
 [node name="BackButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1266023473]
 layout_mode = 2
