@@ -74,27 +74,39 @@ func _on_roll_upgrade_button_pressed():
 	else:
 		result_label.text = "Insufficient Gold, you need 10 Gold to upgrade!"
 
-# Refactored to return the text instead of setting it immediately
+# Refactored to return the text and calculate scaling buffs/curses
+# Refactored to return the text and calculate scaling buffs/curses
 func calculate_upgrade_roll() -> String:
-	var roll = randi_range(1, 20)
-	var center = 10
-	var margin = 2   # range around center that causes steal
+	# I changed this to 0-20, since you mentioned rolling a 0 in your example!
+	var roll = randi_range(0, 20) 
 	var outcome_text = ""
 
-	if roll >= center - margin and roll <= center + margin:
+	if roll >= 8 and roll <= 12:
+		# The Steal Zone (8, 9, 10, 11, 12)
 		Global.item_power = 0
-		outcome_text = "STEAL! (center roll)\n NPC STOLE YOUR ITEM"
+		outcome_text = "STEAL!\n NPC STOLE YOUR ITEM"
 		show_character("steal")
-	elif roll < center - margin:
-		var upgradeAmount = randi_range(1, 10)
-		Global.item_power -= upgradeAmount
-		outcome_text = "CURSE!\nCursed! -" + str(upgradeAmount)
+		
+	elif roll < 8:
+		# The Curse Zone (0 to 7)
+		# We subtract 8 from the roll. 
+		# Example: If roll is 5 -> 5 - 8 = -3. If roll is 0 -> 0 - 8 = -8.
+		var curse_amount = roll - 8 
+		
+		# curse_amount is already a negative number here, so we just add it
+		Global.item_power += curse_amount 
+		outcome_text = "CURSE!\nCursed! " + str(curse_amount)
 		show_character("curse")
-	else:
-		var upgradeAmount = randi_range(1, 10)
-		Global.item_power += upgradeAmount
-		outcome_text = "BUFF!\nBuffed! +" + str(upgradeAmount)
-		show_character("default") # Assuming a buff just shows the normal happy/relieved face
+		
+	elif roll > 12:
+		# The Buff Zone (13 to 20)
+		# We subtract 12 from the roll.
+		# Example: If roll is 20 -> 20 - 12 = 8. If roll is 15 -> 15 - 12 = 3.
+		var buff_amount = roll - 12
+		
+		Global.item_power += buff_amount
+		outcome_text = "BUFF!\nBuffed! +" + str(buff_amount)
+		show_character("default") 
 
 	outcome_text += "\nRoll: " + str(roll)
 	return outcome_text
