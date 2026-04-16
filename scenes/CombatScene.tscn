@@ -101,6 +101,10 @@ title = "Do you want to Upgrade or Fight"
 ok_button_text = "Upgrade"
 cancel_button_text = "Fight"
 
+[node name="LootDialog" type="ConfirmationDialog" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=3317414]
+
 [connection signal="pressed" from="CanvasLayer/Control(UI)/VBoxContainer/RollButton" to="." method="_on_roll_button_pressed"]
 [connection signal="canceled" from="CanvasLayer/Control(UI)/VBoxContainer/UpgradeDialog" to="." method="_on_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="CanvasLayer/Control(UI)/VBoxContainer/UpgradeDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="canceled" from="CanvasLayer/Control(UI)/VBoxContainer/LootDialog" to="." method="_on_loot_dialog_canceled"]
+[connection signal="confirmed" from="CanvasLayer/Control(UI)/VBoxContainer/LootDialog" to="." method="_on_loot_dialog_confirmed"]

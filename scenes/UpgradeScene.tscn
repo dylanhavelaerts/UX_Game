@@ -81,6 +81,9 @@ layout_mode = 2
 [node name="ResultLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=205523794]
 layout_mode = 2
 
+[node name="ItemChoiceContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer" unique_id=1182213699]
+layout_mode = 2
+
 [node name="RollUpgradeButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1110165973]
 layout_mode = 2
 text = "Roll to upgrade
