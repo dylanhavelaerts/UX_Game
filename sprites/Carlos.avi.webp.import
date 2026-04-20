@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qwms4gbvkxt3"
-path="res://.godot/imported/GAJARDO_THE_STICKMAN_SPRITE_2_TRANS.webp-bf8c96f0e6aae38f2b04b2106b2cdb68.ctex"
+uid="uid://m30aed2yjdb8"
+path="res://.godot/imported/Carlos.avi.webp-5a0085619de7fc8392198c3162cb310d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/GAJARDO_THE_STICKMAN_SPRITE_2_TRANS.webp"
-dest_files=["res://.godot/imported/GAJARDO_THE_STICKMAN_SPRITE_2_TRANS.webp-bf8c96f0e6aae38f2b04b2106b2cdb68.ctex"]
+source_file="res://sprites/Carlos.avi.webp"
+dest_files=["res://.godot/imported/Carlos.avi.webp-5a0085619de7fc8392198c3162cb310d.ctex"]
 
 [params]
 

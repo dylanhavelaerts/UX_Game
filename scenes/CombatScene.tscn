@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bxgi4rsib34qy"]
 
 [ext_resource type="Script" uid="uid://cihs1r35wuwrk" path="res://scenes/combat_scene.gd" id="1_gc2ly"]
-[ext_resource type="Texture2D" uid="uid://cf4vf8a5obufu" path="res://sprites/CARLOS_THE_STICKMAN_BACK_SPRITE_TRANS.webp" id="2_rx5ct"]
-[ext_resource type="Texture2D" uid="uid://dkmchdcqq3ic3" path="res://sprites/GAJARDO_THE_STICKMAN_SPRITE_2_TRANS.webp" id="3_h7esm"]
+[ext_resource type="Texture2D" uid="uid://c0jk31nxywvje" path="res://sprites/CARLOS_THE_STICKMAN_BACK_SPRITE_TRANS.webp" id="2_rx5ct"]
+[ext_resource type="Texture2D" uid="uid://qwms4gbvkxt3" path="res://sprites/GAJARDO_THE_STICKMAN_SPRITE_2_TRANS.webp" id="3_h7esm"]
 
 [node name="CombatScene" type="Node" unique_id=307591145]
 script = ExtResource("1_gc2ly")
@@ -31,6 +31,7 @@ offset_left = 300.0
 offset_right = 550.0
 offset_bottom = 280.0
 texture = ExtResource("3_h7esm")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="PlayerHP" type="ProgressBar" parent="CanvasLayer" unique_id=1347983813]

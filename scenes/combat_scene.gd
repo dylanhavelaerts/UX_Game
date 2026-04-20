@@ -12,6 +12,18 @@ var enemy_item: Dictionary = {}  # Het item dat de huidige enemy draagt
 @onready var enemy_label = $"CanvasLayer/Control(UI)/VBoxContainer/EnemyLabel"
 @onready var gold_label = $"CanvasLayer/Control(UI)/VBoxContainer/GoldLabel"
 @onready var loot_dialog = $"CanvasLayer/Control(UI)/VBoxContainer/LootDialog"  # AcceptDialog of Window
+# Grab the visual node for the enemy
+@onready var enemy_visual = $CanvasLayer/Enemy 
+
+# Create a list of the file paths to your new sprites.
+# Note: I filled in what I could see from the screenshot. 
+# Make sure to right-click your files, select "Copy Path", and paste the exact names here!
+var enemy_sprites = [
+	"res://sprites/Carlos.avi.webp",
+	"res://sprites/Carlos_the_Stickman.webp",
+	"res://sprites/GAJARDO_THE_STICKMAN_EXE_ORIGINAL_TURN_SPRITE_TRANS.webp", # Replace with exact path
+	"res://sprites/GAJARDO_THE_STICKMAN_SPRITE_2_TRANS.webp"
+]
 
 func _ready():
 	randomize()
@@ -29,6 +41,10 @@ func spawn_enemy():
 	enemy_item = Global.get_random_item()
 	
 	enemy_label.text = "Enemy Lvl " + str(enemy_level) + " [" + enemy_item["name"] + "]"
+	
+	var random_index = randi() % enemy_sprites.size()
+	var chosen_sprite_path = enemy_sprites[random_index]
+	enemy_visual.texture = load(chosen_sprite_path)
 
 func update_ui():
 	player_hp_bar.value = player_hp
