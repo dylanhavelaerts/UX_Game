@@ -138,7 +138,7 @@ func _on_loot_dialog_confirmed():
 
 func _on_loot_dialog_canceled():
 	# Speler laat item liggen
-	result_label.text = "Left the item on the ground."
+	result_label.text = "Left the item on the ground. "
 	enemy_level += 1
 	spawn_enemy()
 
@@ -152,6 +152,7 @@ func reset_combat():
 	enemy_level = 1
 	spawn_enemy()
 	update_ui()
+
 
 func _on_confirmation_dialog_canceled():
 	reset_combat()
