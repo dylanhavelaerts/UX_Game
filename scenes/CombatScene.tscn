@@ -1,51 +1,63 @@
 [gd_scene format=3 uid="uid://bxgi4rsib34qy"]
 
 [ext_resource type="Script" uid="uid://cihs1r35wuwrk" path="res://scenes/combat_scene.gd" id="1_gc2ly"]
-[ext_resource type="Texture2D" uid="uid://c0jk31nxywvje" path="res://sprites/CARLOS_THE_STICKMAN_BACK_SPRITE_TRANS.webp" id="2_rx5ct"]
-[ext_resource type="Texture2D" uid="uid://qwms4gbvkxt3" path="res://sprites/GAJARDO_THE_STICKMAN_SPRITE_2_TRANS.webp" id="3_h7esm"]
+[ext_resource type="Texture2D" uid="uid://bad72dm7a07nl" path="res://sprites/images/char-hero-a.png" id="3_42t48"]
+[ext_resource type="Texture2D" uid="uid://btwhrbw5l4xpv" path="res://sprites/images/enemy-fighter-b.png" id="4_id1t6"]
+[ext_resource type="Texture2D" uid="uid://cljh6fhex52db" path="res://sprites/images/healthbar-player.png" id="5_dyexf"]
+[ext_resource type="Texture2D" uid="uid://kl0ooravkdy4" path="res://sprites/images/healthbar-enemy.png" id="6_42t48"]
 
 [node name="CombatScene" type="Node" unique_id=307591145]
 script = ExtResource("1_gc2ly")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=479039054]
 
-[node name="Background" type="ColorRect" parent="CanvasLayer" unique_id=1239511162]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.6784314, 0.84705883, 0.9019608, 1)
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=865241408]
+offset_right = 1153.0
+offset_bottom = 648.0
+expand_mode = 1
 
 [node name="Player" type="TextureRect" parent="CanvasLayer" unique_id=766855193]
-offset_left = 10.0
-offset_top = 350.0
+anchors_preset = -1
+offset_left = 78.0
+offset_top = 348.0
 offset_right = 260.0
-offset_bottom = 630.0
-texture = ExtResource("2_rx5ct")
+offset_bottom = 628.0
+texture = ExtResource("3_42t48")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Enemy" type="TextureRect" parent="CanvasLayer" unique_id=1467534691]
 offset_left = 300.0
 offset_right = 550.0
 offset_bottom = 280.0
-texture = ExtResource("3_h7esm")
+texture = ExtResource("4_id1t6")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="HealthbarPlayer" type="Sprite2D" parent="CanvasLayer" unique_id=1562383509]
+position = Vector2(457.00003, 552.00006)
+scale = Vector2(0.27078134, 0.22937503)
+texture = ExtResource("5_dyexf")
+
 [node name="PlayerHP" type="ProgressBar" parent="CanvasLayer" unique_id=1347983813]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 227.0
-offset_top = -72.0
-offset_right = 572.0
-offset_bottom = -45.0
+offset_left = 316.0
+offset_top = -109.0
+offset_right = 661.0
+offset_bottom = -82.0
 grow_vertical = 0
 value = 100.0
 
+[node name="HealthbarEnemy" type="Sprite2D" parent="CanvasLayer" unique_id=742318077]
+position = Vector2(731, 107)
+scale = Vector2(0.271, 0.229)
+texture = ExtResource("6_42t48")
+
 [node name="EnemyHP" type="ProgressBar" parent="CanvasLayer" unique_id=1173770309]
+modulate = Color(0.011764706, 0.011764706, 0.011764706, 1)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -74,22 +86,26 @@ offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control(UI)" unique_id=204885524]
 layout_mode = 1
-offset_top = 30.0
-offset_right = 101.0
+offset_left = 32.0
+offset_top = 33.0
+offset_right = 133.0
 offset_bottom = 330.0
 theme_override_constants/separation = 25
 alignment = 1
 
 [node name="EnemyLabel" type="Label" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=1158059852]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
 theme_override_font_sizes/font_size = 24
 
 [node name="GoldLabel" type="Label" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=1704630754]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
 theme_override_font_sizes/font_size = 20
 
 [node name="ResultLabel" type="Label" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=693431027]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
 theme_override_font_sizes/font_size = 20
 
 [node name="RollButton" type="Button" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=1478911812]
@@ -103,6 +119,13 @@ ok_button_text = "Upgrade"
 cancel_button_text = "Fight"
 
 [node name="LootDialog" type="ConfirmationDialog" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=3317414]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control(UI)/VBoxContainer/LootDialog" unique_id=261825456]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="CanvasLayer/Control(UI)/VBoxContainer/RollButton" to="." method="_on_roll_button_pressed"]
 [connection signal="canceled" from="CanvasLayer/Control(UI)/VBoxContainer/UpgradeDialog" to="." method="_on_confirmation_dialog_canceled"]

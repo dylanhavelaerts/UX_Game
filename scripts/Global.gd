@@ -14,25 +14,93 @@ var equipped_items: Dictionary = {
 # Alle beschikbare items per categorie
 var item_pool = {
 	"hat": [
-		{ "id": "hat_basic", "name": "Worn Cap", "category": "hat", "power_bonus": 1, "texture": "res://assets/items/hat_basic.png" },
-		{ "id": "hat_wizard", "name": "Wizard Hat", "category": "hat", "power_bonus": 3, "texture": "res://assets/items/hat_wizard.png" },
-		{ "id": "hat_crown", "name": "Iron Crown", "category": "hat", "power_bonus": 5, "texture": "res://assets/items/hat_crown.png" },
+		{
+			"id": "hat_cap",
+			"name": "Leather Cap",
+			"category": "hat",
+			"power_bonus": 1,
+			"texture": "res://sprites/images/item-hat-a.png"
+		},
+		{
+			"id": "hat_helmet",
+			"name": "Iron Helmet",
+			"category": "hat",
+			"power_bonus": 4,
+			"texture": "res://sprites/images/item-helmet-a.png"
+		},
+		{
+			"id": "hat_great_helmet",
+			"name": "Knight Helmet",
+			"category": "hat",
+			"power_bonus": 7,
+			"texture": "res://sprites/images/item-helmet-b.png"
+		}
 	],
+
 	"shirt": [
-		{ "id": "shirt_rags", "name": "Rags", "category": "shirt", "power_bonus": 1, "texture": "res://assets/items/shirt_rags.png" },
-		{ "id": "shirt_leather", "name": "Leather Vest", "category": "shirt", "power_bonus": 3, "texture": "res://assets/items/shirt_leather.png" },
-		{ "id": "shirt_chainmail", "name": "Chainmail", "category": "shirt", "power_bonus": 5, "texture": "res://assets/items/shirt_chainmail.png" },
+		{
+			"id": "shirt_cape",
+			"name": "Traveler's Cape",
+			"category": "shirt",
+			"power_bonus": 2,
+			"texture": "res://sprites/images/item-cape-a.png"
+		},
+		{
+			"id": "shirt_guardian_cape",
+			"name": "Guardian Cape",
+			"category": "shirt",
+			"power_bonus": 5,
+			"texture": "res://sprites/images/item-cape-b.png"
+		}
 	],
+
 	"weapon": [
-		{ "id": "weapon_stick", "name": "Stick", "category": "weapon", "power_bonus": 2, "texture": "res://assets/items/weapon_stick.png" },
-		{ "id": "weapon_sword", "name": "Iron Sword", "category": "weapon", "power_bonus": 5, "texture": "res://assets/items/weapon_sword.png" },
-		{ "id": "weapon_axe", "name": "Battle Axe", "category": "weapon", "power_bonus": 8, "texture": "res://assets/items/weapon_axe.png" },
+		{
+			"id": "weapon_sword",
+			"name": "Iron Sword",
+			"category": "weapon",
+			"power_bonus": 4,
+			"texture": "res://sprites/images/item-sword-a.png"
+		},
+		{
+			"id": "weapon_magic_sword",
+			"name": "Enchanted Blade",
+			"category": "weapon",
+			"power_bonus": 7,
+			"texture": "res://sprites/images/item-sword-b.png"
+		},
+		{
+			"id": "weapon_shield",
+			"name": "Knight Shield",
+			"category": "weapon",
+			"power_bonus": 5,
+			"texture": "res://sprites/images/item-shield-a.png"
+		},
+		{
+			"id": "weapon_tower_shield",
+			"name": "Tower Shield",
+			"category": "weapon",
+			"power_bonus": 8,
+			"texture": "res://sprites/images/item-shield-b.png"
+		}
 	],
+
 	"boots": [
-		{ "id": "boots_sandals", "name": "Sandals", "category": "boots", "power_bonus": 1, "texture": "res://assets/items/boots_sandals.png" },
-		{ "id": "boots_leather", "name": "Leather Boots", "category": "boots", "power_bonus": 2, "texture": "res://assets/items/boots_leather.png" },
-		{ "id": "boots_iron", "name": "Iron Boots", "category": "boots", "power_bonus": 4, "texture": "res://assets/items/boots_iron.png" },
-	],
+		{
+			"id": "boots_leather",
+			"name": "Leather Boots",
+			"category": "boots",
+			"power_bonus": 1,
+			"texture": "res://sprites/images/item-boots-a.png"
+		},
+		{
+			"id": "boots_steel",
+			"name": "Steel Boots",
+			"category": "boots",
+			"power_bonus": 4,
+			"texture": "res://sprites/images/item-boots-b.png"
+		}
+	]
 }
 
 func get_random_item() -> Dictionary:

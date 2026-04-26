@@ -14,15 +14,24 @@ var enemy_item: Dictionary = {}  # Het item dat de huidige enemy draagt
 @onready var loot_dialog = $"CanvasLayer/Control(UI)/VBoxContainer/LootDialog"  # AcceptDialog of Window
 # Grab the visual node for the enemy
 @onready var enemy_visual = $CanvasLayer/Enemy 
+@onready var background_visual = $CanvasLayer/Background
+@onready var loot_icon = $"CanvasLayer/Control(UI)/VBoxContainer/LootDialog/TextureRect"
 
 # Create a list of the file paths to your new sprites.
 # Note: I filled in what I could see from the screenshot. 
 # Make sure to right-click your files, select "Copy Path", and paste the exact names here!
 var enemy_sprites = [
-	"res://sprites/Carlos.avi.webp",
-	"res://sprites/Carlos_the_Stickman.webp",
-	"res://sprites/GAJARDO_THE_STICKMAN_EXE_ORIGINAL_TURN_SPRITE_TRANS.webp", # Replace with exact path
-	"res://sprites/GAJARDO_THE_STICKMAN_SPRITE_2_TRANS.webp"
+	"res://sprites/images/enemy-fighter-a.png", 
+	"res://sprites/images/enemy-fighter-b.png", 
+	"res://sprites/images/enemy-mage-a.png", 
+	"res://sprites/images/enemy-mage-b.png", 
+	"res://sprites/images/enemy-skeleton-a.png", 
+	"res://sprites/images/enemy-skeleton-b.png"
+]
+
+var background_sprites = [
+	"res://sprites/images/bg-fight-a.png",
+	"res://sprites/images/bg-fight-b.png"
 ]
 
 func _ready():
@@ -44,7 +53,12 @@ func spawn_enemy():
 	
 	var random_index = randi() % enemy_sprites.size()
 	var chosen_sprite_path = enemy_sprites[random_index]
+	var chosen_background_path = background_sprites[0]
+	if random_index % 2 == 0:
+		chosen_background_path = background_sprites[1]
 	enemy_visual.texture = load(chosen_sprite_path)
+	background_visual.texture = load(chosen_background_path)
+	
 
 func update_ui():
 	player_hp_bar.value = player_hp
@@ -108,19 +122,26 @@ func win():
 	show_loot_dialog()
 
 func show_loot_dialog():
-	# Bouw de loot dialog tekst op
 	var category = enemy_item["category"]
 	var current = Global.equipped_items[category]
-	
-	var dialog_text = "Enemy dropped: " + enemy_item["name"] + " (+" + str(enemy_item["power_bonus"]) + " power)\n"
-	
+
+	var dialog_text = "Enemy dropped: %s (+%d Power)\n\n\n\n" % [
+		enemy_item["name"],
+		enemy_item["power_bonus"]
+	]
+
 	if current != null:
-		# Speler heeft al een item in dat slot
-		dialog_text += "You have: " + current["name"] + " (+" + str(current["power_bonus"]) + " power)\n"
-		dialog_text += "Taking this will drop your current " + category + "!"
+		dialog_text += "Equipped: %s (+%d Power)\n" % [
+			current["name"],
+			current["power_bonus"]
+		]
+		dialog_text += "Replacing it will discard your current item."
 	else:
-		dialog_text += "Slot: " + category + " (currently empty)"
-	
+		dialog_text += "Your %s slot is empty." % category.capitalize()
+
+	loot_icon.texture = load(enemy_item["texture"])
+	loot_icon.visible = true
+
 	loot_dialog.dialog_text = dialog_text
 	loot_dialog.popup_centered()
 
