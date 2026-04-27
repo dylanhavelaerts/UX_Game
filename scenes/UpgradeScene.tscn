@@ -37,26 +37,6 @@ offset_bottom = 636.0
 texture = ExtResource("2_x4ewv")
 expand_mode = 1
 
-[node name="manCursed" type="TextureRect" parent="CanvasLayer/background" unique_id=1582857411]
-visible = false
-layout_mode = 0
-offset_left = 487.0
-offset_top = 195.0
-offset_right = 738.0
-offset_bottom = 418.0
-texture = ExtResource("2_x4ewv")
-expand_mode = 1
-
-[node name="manSteal" type="TextureRect" parent="CanvasLayer/background" unique_id=449143555]
-visible = false
-layout_mode = 0
-offset_left = 483.0
-offset_top = 191.0
-offset_right = 737.0
-offset_bottom = 421.0
-texture = ExtResource("2_x4ewv")
-expand_mode = 1
-
 [node name="frameClose" type="TextureRect" parent="CanvasLayer/background" unique_id=226108374]
 visible = false
 layout_mode = 0

@@ -8,8 +8,6 @@ extends Node
 
 # 1. Grab references to the background images
 @onready var man_default = $CanvasLayer/background/manDefault
-@onready var man_cursed = $CanvasLayer/background/manCursed
-@onready var man_steal = $CanvasLayer/background/manSteal
 @onready var frame_close = $CanvasLayer/background/frameClose
 
 # Animation variables
@@ -28,7 +26,6 @@ func _ready():
 	frame_close.position.y = open_y
 	frame_close.visible = true
 	
-	show_character("default")
 	item_choice_container.visible = false
 	update_ui()
 	
@@ -40,11 +37,6 @@ func update_ui():
 	gold_label.text = "Gold: " + str(Global.gold)
 	# Toon de totale item power
 	item_label.text = "Item Power: " + str(Global.item_power)
-
-func show_character(type: String):
-	man_default.visible = (type == "default")
-	man_cursed.visible = (type == "curse")
-	man_steal.visible = (type == "steal")
 
 # Added is_after_roll parameter so we don't overwrite the result text instantly
 func show_item_selection(is_after_roll: bool = false):
@@ -144,7 +136,6 @@ func calculate_upgrade_roll() -> Dictionary:
 		selected_item = {}
 		outcome["text"] = "YOUR ITEM HAS BEEN STOLEN!"
 		outcome["color"] = Color.RED
-		show_character("steal")
 		
 	elif roll < 8:
 		# The Curse Zone
@@ -154,7 +145,6 @@ func calculate_upgrade_roll() -> Dictionary:
 		Global.recalculate_item_power()
 		outcome["text"] = "YOUR ITEM HAS BEEN CURSED WITH [" + str(curse_amount) + " POWER]"
 		outcome["color"] = Color.RED
-		show_character("curse")
 		
 	elif roll > 12:
 		# The Buff Zone
@@ -164,7 +154,6 @@ func calculate_upgrade_roll() -> Dictionary:
 		Global.recalculate_item_power()
 		outcome["text"] = "YOUR ITEM HAS BEEN BUFFED WITH [+" + str(buff_amount) + " POWER]"
 		outcome["color"] = Color.GREEN
-		show_character("default")
 	
 	outcome["text"] += "\n(Rolled a " + str(roll) + ")"
 	return outcome

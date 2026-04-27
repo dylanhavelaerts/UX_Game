@@ -30,11 +30,6 @@ var enemy_sprites = [
 	"res://sprites/images/enemy-skeleton-b.png"
 ]
 
-var background_sprites = [
-	"res://sprites/images/bg-fight-a.png",
-	"res://sprites/images/bg-fight-b.png"
-]
-
 func _ready():
 	randomize()
 	player_hp = 100
@@ -55,11 +50,7 @@ func spawn_enemy():
 	
 	var random_index = randi() % enemy_sprites.size()
 	var chosen_sprite_path = enemy_sprites[random_index]
-	var chosen_background_path = background_sprites[0]
-	if random_index % 2 == 0:
-		chosen_background_path = background_sprites[1]
 	enemy_visual.texture = load(chosen_sprite_path)
-	background_visual.texture = load(chosen_background_path)
 	
 
 func update_ui():
