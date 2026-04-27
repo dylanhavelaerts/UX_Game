@@ -7,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://cljh6fhex52db" path="res://sprites/images/healthbar-player.png" id="5_dyexf"]
 [ext_resource type="Texture2D" uid="uid://kl0ooravkdy4" path="res://sprites/images/healthbar-enemy.png" id="6_42t48"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42t48"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_id1t6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dyexf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbf1j"]
+
 [node name="CombatScene" type="Node" unique_id=307591145]
 script = ExtResource("1_gc2ly")
 
@@ -19,24 +27,25 @@ texture = ExtResource("2_42t48")
 expand_mode = 1
 
 [node name="Player" type="TextureRect" parent="CanvasLayer" unique_id=766855193]
-offset_left = 78.0
-offset_top = 348.0
-offset_right = 260.0
-offset_bottom = 628.0
+offset_left = 81.0
+offset_top = 297.0
+offset_right = 263.0
+offset_bottom = 577.0
 texture = ExtResource("3_42t48")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Enemy" type="TextureRect" parent="CanvasLayer" unique_id=1467534691]
-offset_left = 300.0
-offset_right = 550.0
-offset_bottom = 280.0
+offset_left = 502.0
+offset_top = -8.600006
+offset_right = 752.0
+offset_bottom = 271.4
 texture = ExtResource("4_id1t6")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="HealthbarPlayer" type="Sprite2D" parent="CanvasLayer" unique_id=1562383509]
-position = Vector2(457.00003, 552.00006)
+position = Vector2(460.00003, 501.00006)
 scale = Vector2(0.27078134, 0.22937503)
 texture = ExtResource("5_dyexf")
 
@@ -45,31 +54,35 @@ modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 316.0
-offset_top = -109.0
-offset_right = 661.0
-offset_bottom = -82.0
+offset_left = 319.0
+offset_top = -160.0
+offset_right = 664.0
+offset_bottom = -133.0
 grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_42t48")
+theme_override_styles/fill = SubResource("StyleBoxEmpty_id1t6")
 value = 100.0
 
 [node name="HealthbarEnemy" type="Sprite2D" parent="CanvasLayer" unique_id=742318077]
-position = Vector2(731, 107)
+position = Vector2(933, 98.399994)
 scale = Vector2(0.271, 0.229)
 texture = ExtResource("6_42t48")
 
-[node name="EnemyHP" type="ProgressBar" parent="CanvasLayer" unique_id=1173770309]
+[node name="EnemyHP" type="ProgressBar" parent="CanvasLayer" unique_id=587774223]
 modulate = Color(0.011764706, 0.011764706, 0.011764706, 1)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -626.0
-offset_top = -555.0
-offset_right = -285.0
-offset_bottom = -528.0
+offset_left = -422.0
+offset_top = -563.0
+offset_right = -81.0
+offset_bottom = -536.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_dyexf")
+theme_override_styles/fill = SubResource("StyleBoxEmpty_pbf1j")
 value = 100.0
 
 [node name="DiceLabel" type="Label" parent="CanvasLayer" unique_id=362968517]
