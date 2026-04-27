@@ -78,6 +78,20 @@ text = "🎲 ROLL"
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="InventoryPanel" type="PanelContainer" parent="CanvasLayer" unique_id=424450379]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="InventoryList" type="VBoxContainer" parent="CanvasLayer/InventoryPanel" unique_id=856562592]
+layout_mode = 2
+
 [node name="Control(UI)" type="Control" parent="CanvasLayer" unique_id=979033294]
 layout_mode = 3
 anchors_preset = 0

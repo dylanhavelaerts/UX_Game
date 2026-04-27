@@ -12,6 +12,7 @@ var enemy_item: Dictionary = {}  # Het item dat de huidige enemy draagt
 @onready var enemy_label = $"CanvasLayer/Control(UI)/VBoxContainer/EnemyLabel"
 @onready var gold_label = $"CanvasLayer/Control(UI)/VBoxContainer/GoldLabel"
 @onready var loot_dialog = $"CanvasLayer/Control(UI)/VBoxContainer/LootDialog"  # AcceptDialog of Window
+@onready var inventory_list = $CanvasLayer/InventoryPanel/InventoryList
 # Grab the visual node for the enemy
 @onready var enemy_visual = $CanvasLayer/Enemy 
 @onready var background_visual = $CanvasLayer/Background
@@ -40,6 +41,7 @@ func _ready():
 	enemy_level = 1
 	spawn_enemy()
 	update_ui()
+	update_inventory_ui()
 
 func spawn_enemy():
 	enemy_hp = 40 + enemy_level * 10
@@ -152,6 +154,8 @@ func _on_loot_dialog_confirmed():
 		result_label.text = "Picked up " + enemy_item["name"] + "! Dropped " + dropped["name"] + "."
 	else:
 		result_label.text = "Picked up " + enemy_item["name"] + "!"
+		
+	update_inventory_ui()
 	
 	# Ga door naar volgende enemy
 	enemy_level += 1
@@ -174,8 +178,35 @@ func reset_combat():
 	spawn_enemy()
 	update_ui()
 
+
 func _on_confirmation_dialog_canceled():
 	reset_combat()
 
 func _on_confirmation_dialog_confirmed() -> void:
 	get_tree().change_scene_to_file("res://scenes/UpgradeScene.tscn")
+func update_inventory_ui():
+	# 1. Clear out the old list
+	for child in inventory_list.get_children():
+		child.queue_free()
+		
+	# 2. Add a nice title
+	var title_label = Label.new()
+	title_label.text = "--- EQUIPPED ---"
+	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	inventory_list.add_child(title_label)
+	
+	# 3. Loop through the slots in your Global script
+	for slot in Global.equipped_items.keys():
+		var item = Global.equipped_items[slot]
+		var slot_label = Label.new()
+		
+		if item != null:
+			# If you have an item, show its name and power in green
+			slot_label.text = slot.capitalize() + ": " + item["name"] + " (+" + str(item["power_bonus"]) + ")"
+			slot_label.add_theme_color_override("font_color", Color.LIGHT_GREEN)
+		else:
+			# If the slot is empty, show it in gray
+			slot_label.text = slot.capitalize() + ": Empty"
+			slot_label.add_theme_color_override("font_color", Color.GRAY)
+			
+		inventory_list.add_child(slot_label)
