@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bmelolh6l1vn3"]
+
+[ext_resource type="Script" uid="uid://burjbgs6swnv" path="res://scenes/start_scene.gd" id="1_4iifn"]
+[ext_resource type="Texture2D" uid="uid://c131nuqxof72y" path="res://sprites/images/bg-upgrade-a.png" id="1_eno0h"]
+
+[node name="StartScene" type="Node2D" unique_id=1671183800]
+script = ExtResource("1_4iifn")
+
+[node name="Node" type="Node" parent="." unique_id=2122274630]
+
+[node name="backgroundStatic" type="TextureRect" parent="Node" unique_id=264414412]
+offset_left = -1205.0
+offset_top = -1135.0
+offset_right = 2178.0
+offset_bottom = 1553.0
+texture = ExtResource("1_eno0h")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node" unique_id=495452406]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 51
+
+[node name="Label" type="Label" parent="Node/VBoxContainer" unique_id=594513907]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 72
+text = "Room of Dice"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node/VBoxContainer" unique_id=712056436]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 28
+
+[node name="Play" type="Button" parent="Node/VBoxContainer/HBoxContainer" unique_id=414104843]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 43
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="Node/VBoxContainer/HBoxContainer" unique_id=1335652654]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 43
+text = "QUIT"
+
+[connection signal="pressed" from="Node/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Node/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

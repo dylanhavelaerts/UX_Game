@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="UX_Design"
-run/main_scene="uid://bxgi4rsib34qy"
+run/main_scene="uid://bmelolh6l1vn3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*uid://doq653goylnrq"
+SaveData="*uid://ckw4vtct3rk8q"
 
 [display]
 
