@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cqo2nhswpkyuf" path="res://sprites/images/upgrade-blinds.png" id="3_mftd2"]
 [ext_resource type="Texture2D" uid="uid://o7qgf510thxn" path="res://sprites/images/upgrade-frame-wood.png" id="4_1jces"]
 [ext_resource type="Texture2D" uid="uid://cypf74f82qint" path="res://sprites/images/char-hero-back.png" id="6_1jces"]
+[ext_resource type="Script" uid="uid://u0eqxrui4xcc" path="res://scenes/tutorial2.gd" id="7_jy4p0"]
+[ext_resource type="Texture2D" uid="uid://ds5024q1r4hg0" path="res://sprites/images/enemy-skeleton-a.png" id="8_yhlgp"]
+[ext_resource type="Texture2D" uid="uid://c0v6yxwhsrfjm" path="res://sprites/images/tutorial/tutorial-bubble-left.png" id="9_4xp1r"]
 
 [node name="UpgradeScene" type="Node" unique_id=337092419]
 script = ExtResource("1_jb3l7")
@@ -86,6 +89,52 @@ text = "Roll to upgrade
 [node name="BackButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1266023473]
 layout_mode = 2
 text = "Go back to fighting"
+
+[node name="Tutorial" type="CanvasLayer" parent="CanvasLayer" unique_id=61726946]
+script = ExtResource("7_jy4p0")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Tutorial" unique_id=666945197]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4862745)
+
+[node name="Tut1" type="Control" parent="CanvasLayer/Tutorial/ColorRect" unique_id=1691573043]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Tutorial/ColorRect/Tut1" unique_id=1690911880]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 304.0
+offset_right = 599.0
+offset_bottom = 1049.0
+texture = ExtResource("8_yhlgp")
+expand_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Tutorial/ColorRect/Tut1" unique_id=32979546]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 89.0
+offset_right = 681.0
+offset_bottom = 417.0
+texture = ExtResource("9_4xp1r")
+expand_mode = 1
+
+[node name="c1" type="Label" parent="CanvasLayer/Tutorial/ColorRect/Tut1/TextureRect2" unique_id=1858107686]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 85.0
+offset_right = 453.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 15
+text = "Here you can choose what item to upgrade.
+You roll to upgrade, this can lead to either a 
+buff, nerf or steal!"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/RollUpgradeButton" to="." method="_on_roll_upgrade_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

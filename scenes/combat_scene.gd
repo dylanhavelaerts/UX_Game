@@ -19,8 +19,6 @@ var enemy_item: Dictionary = {}  # Het item dat de huidige enemy draagt
 @onready var loot_icon = $"CanvasLayer/Control(UI)/VBoxContainer/LootDialog/TextureRect"
 
 # Create a list of the file paths to your new sprites.
-# Note: I filled in what I could see from the screenshot. 
-# Make sure to right-click your files, select "Copy Path", and paste the exact names here!
 var enemy_sprites = [
 	"res://sprites/images/enemy-fighter-a.png", 
 	"res://sprites/images/enemy-fighter-b.png", 
@@ -32,11 +30,25 @@ var enemy_sprites = [
 
 func _ready():
 	randomize()
+	
+	# --- TUTORIAL LOGICA START ---
+	if SaveData.combat_tutorial_done == false:
+		$Tutorial.show()
+		$Tutorial.tutorial_finished.connect(_on_combat_tutorial_finished)
+	else:
+		$Tutorial.hide()
+	# --- TUTORIAL LOGICA EIND ---
+	
 	player_hp = 100
 	enemy_level = 1
 	spawn_enemy()
 	update_ui()
 	update_inventory_ui()
+
+# Deze functie wordt aangeroepen als de tutorial klaar is
+func _on_combat_tutorial_finished():
+	SaveData.combat_tutorial_done = true
+	print("Combat tutorial voltooid en opgeslagen in SaveData.")
 
 func spawn_enemy():
 	enemy_hp = 40 + enemy_level * 10
@@ -80,7 +92,7 @@ func _on_roll_button_pressed():
 		$"CanvasLayer/Control(UI)/VBoxContainer/RollButton".disabled = false
 		return
 		
-	# 4. Wait a moment to build suspense! (0.8 to 1 second is usually the sweet spot)
+	# 4. Wait a moment to build suspense!
 	await get_tree().create_timer(0.8).timeout
 	
 	# 5. Enemy attacks back
@@ -103,15 +115,12 @@ func check_combat():
 
 func double_ko():
 	result_label.text = "💥 BOTH DIED!"
-	# Bij double KO geen loot, gewoon upgrade dialog
 	$"CanvasLayer/Control(UI)/VBoxContainer/UpgradeDialog".popup_centered()
 
 func win():
 	var reward = 10 + enemy_level * 5
 	Global.gold += reward
 	result_label.text = "YOU WIN! +" + str(reward) + " gold"
-	
-	# Toon loot popup zodat speler kan kiezen om item op te pakken
 	show_loot_dialog()
 
 func show_loot_dialog():
@@ -139,7 +148,6 @@ func show_loot_dialog():
 	loot_dialog.popup_centered()
 
 func _on_loot_dialog_confirmed():
-	# Speler kiest om het item op te pakken
 	var dropped = Global.equip_item(enemy_item)
 	if not dropped.is_empty():
 		result_label.text = "Picked up " + enemy_item["name"] + "! Dropped " + dropped["name"] + "."
@@ -147,13 +155,10 @@ func _on_loot_dialog_confirmed():
 		result_label.text = "Picked up " + enemy_item["name"] + "!"
 		
 	update_inventory_ui()
-	
-	# Ga door naar volgende enemy
 	enemy_level += 1
 	spawn_enemy()
 
 func _on_loot_dialog_canceled():
-	# Speler laat item liggen
 	result_label.text = "Left the item on the ground."
 	enemy_level += 1
 	spawn_enemy()
@@ -169,35 +174,32 @@ func reset_combat():
 	spawn_enemy()
 	update_ui()
 
-
 func _on_confirmation_dialog_canceled():
 	reset_combat()
 
 func _on_confirmation_dialog_confirmed() -> void:
 	get_tree().change_scene_to_file("res://scenes/UpgradeScene.tscn")
+
 func update_inventory_ui():
-	# 1. Clear out the old list
 	for child in inventory_list.get_children():
 		child.queue_free()
 		
-	# 2. Add a nice title
 	var title_label = Label.new()
 	title_label.text = "--- EQUIPPED ---"
 	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title_label.add_theme_color_override("font_color", Color.BLACK)
 	inventory_list.add_child(title_label)
 	
-	# 3. Loop through the slots in your Global script
 	for slot in Global.equipped_items.keys():
 		var item = Global.equipped_items[slot]
 		var slot_label = Label.new()
+		slot_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		
 		if item != null:
-			# If you have an item, show its name and power in green
 			slot_label.text = slot.capitalize() + ": " + item["name"] + " (+" + str(item["power_bonus"]) + ")"
-			slot_label.add_theme_color_override("font_color", Color.LIGHT_GREEN)
+			slot_label.add_theme_color_override("font_color", Color.BLACK)
 		else:
-			# If the slot is empty, show it in gray
 			slot_label.text = slot.capitalize() + ": Empty"
-			slot_label.add_theme_color_override("font_color", Color.GRAY)
+			slot_label.add_theme_color_override("font_color", Color.hex(0x333333)) 
 			
 		inventory_list.add_child(slot_label)

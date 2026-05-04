@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://csqapenondy5n"]
+
+[ext_resource type="Texture2D" uid="uid://bgd3mm8boebbd" path="res://sprites/images/bg.png" id="1_chjcb"]
+[ext_resource type="Texture2D" uid="uid://bad72dm7a07nl" path="res://sprites/images/char-hero-a.png" id="2_3aqmq"]
+[ext_resource type="Texture2D" uid="uid://btwhrbw5l4xpv" path="res://sprites/images/enemy-fighter-b.png" id="3_82to5"]
+[ext_resource type="Texture2D" uid="uid://cljh6fhex52db" path="res://sprites/images/healthbar-player.png" id="4_c4ejc"]
+[ext_resource type="Texture2D" uid="uid://kl0ooravkdy4" path="res://sprites/images/healthbar-enemy.png" id="5_52td3"]
+[ext_resource type="Script" uid="uid://crat1hcl57uc6" path="res://tutorial.gd" id="6_esk3u"]
+[ext_resource type="Texture2D" uid="uid://ds5024q1r4hg0" path="res://sprites/images/enemy-skeleton-a.png" id="7_yqlce"]
+[ext_resource type="Texture2D" uid="uid://c0v6yxwhsrfjm" path="res://sprites/images/tutorial/tutorial-bubble-left.png" id="8_q7h58"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t8o7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qw6ie"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc48h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3msde"]
+
+[node name="Node2D" type="Node2D" unique_id=1202403782]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1892848131]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=514698870]
+offset_right = 1153.0
+offset_bottom = 648.0
+texture = ExtResource("1_chjcb")
+expand_mode = 1
+
+[node name="Player" type="TextureRect" parent="CanvasLayer" unique_id=490830491]
+offset_left = 81.0
+offset_top = 297.0
+offset_right = 263.0
+offset_bottom = 577.0
+texture = ExtResource("2_3aqmq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Enemy" type="TextureRect" parent="CanvasLayer" unique_id=1839007177]
+offset_left = 502.0
+offset_top = -8.600006
+offset_right = 752.0
+offset_bottom = 271.4
+texture = ExtResource("3_82to5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HealthbarPlayer" type="Sprite2D" parent="CanvasLayer" unique_id=1049937473]
+position = Vector2(460.00003, 501.00006)
+scale = Vector2(0.27078134, 0.22937503)
+texture = ExtResource("4_c4ejc")
+
+[node name="PlayerHP" type="ProgressBar" parent="CanvasLayer" unique_id=1629419362]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 319.0
+offset_top = -160.0
+offset_right = 664.0
+offset_bottom = -133.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_6t8o7")
+theme_override_styles/fill = SubResource("StyleBoxEmpty_qw6ie")
+value = 100.0
+
+[node name="HealthbarEnemy" type="Sprite2D" parent="CanvasLayer" unique_id=1803296538]
+position = Vector2(933, 98.399994)
+scale = Vector2(0.271, 0.229)
+texture = ExtResource("5_52td3")
+
+[node name="EnemyHP" type="ProgressBar" parent="CanvasLayer" unique_id=818378501]
+modulate = Color(0.011764706, 0.011764706, 0.011764706, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -422.0
+offset_top = -563.0
+offset_right = -81.0
+offset_bottom = -536.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_cc48h")
+theme_override_styles/fill = SubResource("StyleBoxEmpty_3msde")
+value = 100.0
+
+[node name="DiceLabel" type="Label" parent="CanvasLayer" unique_id=600638345]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "🎲 ROLL"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="InventoryPanel" type="PanelContainer" parent="CanvasLayer" unique_id=1363147131]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="InventoryList" type="VBoxContainer" parent="CanvasLayer/InventoryPanel" unique_id=1577527547]
+layout_mode = 2
+
+[node name="Control(UI)" type="Control" parent="CanvasLayer" unique_id=67304413]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control(UI)" unique_id=1327077495]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 33.0
+offset_right = 133.0
+offset_bottom = 330.0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="EnemyLabel" type="Label" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=713987508]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="GoldLabel" type="Label" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=831494544]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="ResultLabel" type="Label" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=1270880333]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="RollButton" type="Button" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=1850199463]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "🎲 Roll Dice"
+
+[node name="UpgradeDialog" type="ConfirmationDialog" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=708803234]
+title = "Do you want to Upgrade or Fight"
+ok_button_text = "Upgrade"
+cancel_button_text = "Fight"
+
+[node name="LootDialog" type="ConfirmationDialog" parent="CanvasLayer/Control(UI)/VBoxContainer" unique_id=44092713]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control(UI)/VBoxContainer/LootDialog" unique_id=2064185011]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Tutorial" type="CanvasLayer" parent="." unique_id=179530401]
+script = ExtResource("6_esk3u")
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial" unique_id=586229109]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4862745)
+
+[node name="Tut1" type="Control" parent="Tutorial/ColorRect" unique_id=923892704]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial/ColorRect/Tut1" unique_id=1799211063]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 304.0
+offset_right = 599.0
+offset_bottom = 1049.0
+texture = ExtResource("7_yqlce")
+expand_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="Tutorial/ColorRect/Tut1" unique_id=950976526]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 89.0
+offset_right = 681.0
+offset_bottom = 417.0
+texture = ExtResource("8_q7h58")
+expand_mode = 1
+
+[node name="c1" type="Label" parent="Tutorial/ColorRect/Tut1/TextureRect2" unique_id=1253999782]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 85.0
+offset_right = 453.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 15
+text = "Hey there player! Welcome to Room Of Dice.
+Thank you for playing the functionality test
+version."
+
+[node name="c2" type="Label" parent="Tutorial/ColorRect/Tut1/TextureRect2" unique_id=1312228745]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 85.0
+offset_right = 453.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 15
+text = "The fighting mechanic works as follows. To
+fight, you press the \"Roll Dice\" button. Which
+will give u a number (0, 20)."
+
+[node name="c3" type="Label" parent="Tutorial/ColorRect/Tut1/TextureRect2" unique_id=21636127]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 85.0
+offset_right = 453.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 15
+text = "If you have a higher number then the enemy,
+you deal damage. Otherwise, you take 
+damage."
+
+[node name="Tut2" type="Control" parent="Tutorial/ColorRect" unique_id=1647452066]
+visible = false
+anchors_preset = 0
+offset_left = 493.0
+offset_top = 65.0
+offset_right = 533.0
+offset_bottom = 105.0
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial/ColorRect/Tut2" unique_id=1441045920]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 304.0
+offset_right = 599.0
+offset_bottom = 1049.0
+texture = ExtResource("7_yqlce")
+expand_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="Tutorial/ColorRect/Tut2" unique_id=1433608399]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 89.0
+offset_right = 681.0
+offset_bottom = 417.0
+texture = ExtResource("8_q7h58")
+expand_mode = 1
+
+[node name="c1" type="Label" parent="Tutorial/ColorRect/Tut2/TextureRect2" unique_id=1748420366]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 85.0
+offset_right = 453.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 15
+text = "Down here, you will see you selected items.
+You can only have 1 of each kind. If you die
+you keep the items."
+
+[node name="c2" type="Label" parent="Tutorial/ColorRect/Tut2/TextureRect2" unique_id=1432815293]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 85.0
+offset_right = 453.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 15
+text = "That's it, good luck!"
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial/ColorRect/Tut2" unique_id=548772566]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 433.0
+offset_right = 673.0
+offset_bottom = 591.0
+color = Color(0.5718735, 0, 0.15505987, 1)

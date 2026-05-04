@@ -21,6 +21,14 @@ var selected_item: Dictionary = {}
 func _ready():
 	randomize()
 	
+	# --- TUTORIAL CHECK START ---
+	if SaveData.upgrade_tutorial_done == false:
+		$CanvasLayer/Tutorial.show()
+		$CanvasLayer/Tutorial.tutorial_finished.connect(_on_tutorial_finished)
+	else:
+		$CanvasLayer/Tutorial.hide()
+	# --- TUTORIAL CHECK END ---
+	
 	closed_y = frame_close.position.y
 	open_y = closed_y - drop_distance
 	frame_close.position.y = open_y
@@ -160,3 +168,8 @@ func calculate_upgrade_roll() -> Dictionary:
 
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/CombatScene.tscn")
+
+func _on_tutorial_finished():
+	SaveData.upgrade_tutorial_done = true
+	# Optioneel: je kunt hier iets triggeren dat pas mag starten NA de uitleg
+	print("Speler snapt hoe upgraden werkt!")
