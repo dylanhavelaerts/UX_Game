@@ -20,10 +20,10 @@ offset_bottom = 40.0
 
 [node name="backgroundStatic" type="TextureRect" parent="CanvasLayer/background" unique_id=672315324]
 layout_mode = 0
-offset_left = 239.0
-offset_top = 89.0
-offset_right = 2138.0
-offset_bottom = 1084.0
+offset_left = 272.0
+offset_top = 196.0
+offset_right = 875.0
+offset_bottom = 489.0
 texture = ExtResource("2_jdyxm")
 expand_mode = 1
 stretch_mode = 6
@@ -49,9 +49,10 @@ expand_mode = 1
 
 [node name="frameStatic" type="TextureRect" parent="CanvasLayer/background" unique_id=1081519320]
 layout_mode = 0
-offset_top = -64.0
-offset_right = 1145.0
-offset_bottom = 715.0
+offset_left = -4.0
+offset_top = -60.0
+offset_right = 1141.0
+offset_bottom = 719.0
 texture = ExtResource("4_1jces")
 expand_mode = 1
 
